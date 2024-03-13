@@ -20,6 +20,8 @@ io.on("connection", (socket) => {
   //   chat message event
   socket.on("chat message", (msg)=>{
     console.log("message: " + msg)
+    // emit the message to every one connected to this io()
+    io.emit("chat message", msg)
   })
 });
 

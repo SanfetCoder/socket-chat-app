@@ -69,6 +69,7 @@
       // emit the message event when submitting the form
       const form = document.getElementById("form");
       const input = document.getElementById("input");
+      const messages = document.getElementById("messages");
 
       // listen form submit event
       form.addEventListener("submit", function (event) {
@@ -81,6 +82,16 @@
         // reset input value
         input.value = "";
       });
+
+       // listen on "chat message event"
+       socket.on('chat message', function(msg){
+            var item = document.createElement('li');
+            item.textContent = msg;
+            // append this element to messages
+            messages.append(item)
+            // scroll the window
+            window.scrollTo(0, document.body.scrollHeight)
+        })
     </script>
   </body>
 </html>
