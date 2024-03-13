@@ -12,17 +12,18 @@ app.get("/", (req, res) => {
 });
 
 io.on("connection", (socket) => {
-  console.log("a user connected");
+  // emit user connected event to notify there is a user connecting
+  io.emit("user connected", "A user is connecting");
   //   disconnect event
   socket.on("disconnect", () => {
     console.log("user disconnected");
   });
   //   chat message event
-  socket.on("chat message", (msg)=>{
-    console.log("message: " + msg)
+  socket.on("chat message", (msg) => {
+    console.log("message: " + msg);
     // emit the message to every one connected to this io()
-    io.emit("chat message", msg)
-  })
+    io.emit("chat message", msg);
+  });
 });
 
 server.listen(3000, () => {

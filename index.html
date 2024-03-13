@@ -83,15 +83,20 @@
         input.value = "";
       });
 
-       // listen on "chat message event"
-       socket.on('chat message', function(msg){
-            var item = document.createElement('li');
-            item.textContent = msg;
-            // append this element to messages
-            messages.append(item)
-            // scroll the window
-            window.scrollTo(0, document.body.scrollHeight)
-        })
+      // listen on "chat message event"
+      socket.on("chat message", function (msg) {
+        var item = document.createElement("li");
+        item.textContent = msg;
+        // append this element to messages
+        messages.append(item);
+        // scroll the window
+        window.scrollTo(0, document.body.scrollHeight);
+      });
+
+      //   listen on "user connected" event
+      socket.on("user connected", function (msg) {
+        alert(msg);
+      });
     </script>
   </body>
 </html>
